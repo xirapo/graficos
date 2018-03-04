@@ -68,6 +68,12 @@ body {
   font-size: 12px;
 }
 
+ .forgot-password{
+   text-align: center;
+   margin-top: 20px !important;
+   margin-bottom: 0px !important;
+ }
+
 .account-signup {
   max-width: 380px;
   padding: 15px 35px;

@@ -34,3 +34,16 @@
   text-align: center;
   color: #2a2a2a;
   font-family: 'Roboto', sans-serif; }
+
+.footer {
+    padding: 1em;
+    color: #2a2a2a;
+    clear: left;
+    text-align: center;
+}
+
+.footer a {
+  color: #2a2a2a;
+  float: right;
+  font-family: 'Roboto', serif;
+}
