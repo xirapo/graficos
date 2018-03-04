@@ -18,6 +18,10 @@
       {% if err %}
       <p class="alert alert-danger"><strong>Error:</strong> {{ err }}</p>
       {% endif %}
+      {% for message in get_flashed_messages() %}
+        <p class="alert alert-danger">{{ message }} </p>
+
+      {% endfor %}
 
       <div class="inner-addon left-addon">
         <label class="control-label">Username</label>
