@@ -1,2 +1,6 @@
 /genv
 /__pycache__
+/.vscode
+/__pycache__
+/venv
+/.idea
