@@ -2,7 +2,12 @@
 from flask import Flask, render_template, redirect, url_for, request, \
 session, flash
 
+# import wraps for session controll
 from functools import wraps
+
+#import pandas for data manipulation
+import pandas as pd
+import numpy as np
 
 app = Flask(__name__)
 
@@ -26,7 +31,15 @@ def login_required(f):
 ## home
 @app.route('/')
 def home():
-    return render_template("index.html")
+    data = pd.read_csv('data/Libro.csv', sep=';', header=0, encoding='latin1')
+    h = data['NOMBRE'][:1]
+    p = data['PRODUCCION']
+    t1 = data['TIPO1'].str.replace("[(%':]", "")
+    t2 = data['TIPO2']
+    print (h)
+    print ("produccion: " + p)
+    print (data)
+    return render_template("index.html",tipo1=t1, tipo2=t2, header=h, production= p)
 ## login
 @app.route('/login', methods=['GET','POST'])
 def login():

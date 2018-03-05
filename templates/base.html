@@ -20,5 +20,61 @@
 <script src="/static/js/lib/bootstrap.bundle.min.js"></script>
 <script src="/static/js/lib/Chart.bundle.min.js" ></script>
 <script type="application/javascript" src="static/js/index.js"></script>
+<script>
+var p = document.getElementById('myChart').getContext('2d');
+var e = document.getElementById('Chart').getContext('2d');
+
+var mychart = new Chart(p, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: [{% for item in header %}
+                  "{{item}}",
+              {% endfor %}],
+        datasets: [{
+            label: "My First dataset",
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [{% for item in production %}
+                        {{item}},
+                    {% endfor %}],
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+        responsive: true
+    }
+
+})
+
+var mychart2 = new Chart(e, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: [{% for nombre in header %}
+                      "{{nombre}}",
+                    {% endfor %}],
+        datasets: [{
+            label: "My First dataset",
+            borderColor: 'rgb(255, 99, 132)',
+            data: [{% for t1 in tipo1 %}
+                      {{t1}},
+                  {% endfor %}],
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+        responsive: true,
+    }
+
+});
+
+</script>
 </body>
 </html>
