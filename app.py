@@ -35,7 +35,7 @@ def home():
     h = data['NOMBRE'][:1]
     p = data['PRODUCCION']
     t1 = data['TIPO1'].str.replace("[(%':]", "")
-    t2 = data['TIPO2']
+    t2 = data['TIPO2'].str.replace("[(%':]", "")
     print (h)
     print ("produccion: " + p)
     print (data)

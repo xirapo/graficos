@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Graph</title>
+    <title>Sissa</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/index.css">
@@ -34,7 +34,7 @@ var mychart = new Chart(p, {
                   "{{item}}",
               {% endfor %}],
         datasets: [{
-            label: "My First dataset",
+            label: "Produccion",
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [{% for item in production %}
@@ -60,17 +60,26 @@ var mychart2 = new Chart(e, {
                       "{{nombre}}",
                     {% endfor %}],
         datasets: [{
-            label: "My First dataset",
+            label: "L1",
             borderColor: 'rgb(255, 99, 132)',
             data: [{% for t1 in tipo1 %}
                       {{t1}},
                   {% endfor %}],
-        }]
+
+        },
+      {
+        label: "L2",
+        borderColor: '#007bff',
+        data: [{% for t2 in tipo2 %}
+                  {{t2}},
+              {% endfor %}],
+      }]
     },
 
     // Configuration options go here
     options: {
         responsive: true,
+
     }
 
 });
