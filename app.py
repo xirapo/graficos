@@ -1,8 +1,7 @@
 # imports
-from flask import Flask, render_template, redirect, url_for, request, \
-session, flash
+from flask import Flask, render_template, redirect, url_for, request,session ,flash
 
-# import wraps for session controll
+# import wraps for session control
 from functools import wraps
 
 #import pandas for data manipulation
