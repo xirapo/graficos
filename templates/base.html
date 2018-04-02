@@ -13,78 +13,251 @@
 </head>
 <body>
 
-{% block content %}{% endblock%}
+{% block content %}{% endblock %}
 
-
-<script src="/static/js/lib/jquery-3.3.1.min.js" ></script>
+<script src="/static/js/lib/jquery-3.3.1.min.js"></script>
 <script src="/static/js/lib/bootstrap.bundle.min.js"></script>
-<script src="/static/js/lib/Chart.bundle.min.js" ></script>
+<script src="/static/js/lib/Chart.bundle.min.js"></script>
 <script type="application/javascript" src="static/js/index.js"></script>
+
 <script>
-// getting the DOM
-var p = document.getElementById('myChart').getContext('2d');
-var e = document.getElementById('Chart').getContext('2d');
+    var p = document.getElementById('myChart1').getContext('2d');
+    var e = document.getElementById('myChart2').getContext('2d');
+    var t = document.getElementById('myChart3').getContext('2d');
 
-var mychart = new Chart(p, {
-    // The type of chart we want to create
-    type: 'bar',
+    var lista_nombres = [{% for row in title %} "{{ row }}", {% endfor %}];
 
-    // The data for our dataset
-    data: {
-        labels: [{% for item in header %}
-                  "{{item}}",
-              {% endfor %}],
-        datasets: [{
-            label: "Produccion",
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [{% for item in production %}
-                        {{item}},
-                    {% endfor %}],
-        }]
-    },
+    var lista_product1 = [{% for row in product1 %} "{{ row }}", {% endfor %}];
+    var lista_product2 = [{% for row in product2 %} "{{ row }}", {% endfor %}];
+    var lista_product3 = [{% for row in product3 %} "{{ row }}", {% endfor %}];
+    var lista_product4 = [{% for row in product4 %} "{{ row }}", {% endfor %}];
+    var lista_product5 = [{% for row in product5 %} "{{ row }}", {% endfor %}];
 
-    // Configuration options go here
-    options: {
-        responsive: true
+    var lista_c1l1 = [{% for row in c1l1 %} "{{ row }}", {% endfor %}];
+    var lista_c2l1 = [{% for row in c2l1 %} "{{ row }}", {% endfor %}];
+    var lista_c3l1 = [{% for row in c3l1 %} "{{ row }}", {% endfor %}];
+    var lista_c4l1 = [{% for row in c4l1 %} "{{ row }}", {% endfor %}];
+    var lista_c5l1 = [{% for row in c5l1 %} "{{ row }}", {% endfor %}];
+
+    var lista_c1l2 = [{% for row in c1l2 %} "{{ row }}", {% endfor %}];
+    var lista_c2l2 = [{% for row in c2l2 %} "{{ row }}", {% endfor %}];
+    var lista_c3l2 = [{% for row in c3l2 %} "{{ row }}", {% endfor %}];
+    var lista_c4l2 = [{% for row in c4l2 %} "{{ row }}", {% endfor %}];
+    var lista_c5l2 = [{% for row in c5l2 %} "{{ row }}", {% endfor %}];
+
+    var lista_tiempo1 = [{% for row in time1 %} "{{ row }}", {% endfor %}];
+    var lista_tiempo2 = [{% for row in time2 %} "{{ row }}", {% endfor %}];
+    var lista_tiempo3 = [{% for row in time3 %} "{{ row }}", {% endfor %}];
+    var lista_tiempo4 = [{% for row in time4 %} "{{ row }}", {% endfor %}];
+    var lista_tiempo5 = [{% for row in time5 %} "{{ row }}", {% endfor %}];
+
+    var indice = 0;
+    var myvar = setInterval(grafico_produccion, 15000);
+
+    function grafico_produccion() {
+        document.getElementById('lblempleado').innerHTML = lista_nombres[indice];
+
+        var mychart1 = new Chart(p, {
+            type: 'bar',
+            data: {
+                labels: ["Semana 1", "Semana 2", "Semana 3", "Semana 4", "Semana 5"],
+                datasets: [
+                    {
+                        label: "Produccion",
+                        backgroundColor: [
+                            '#ff6384',
+                            '#ffcf3f',
+                            '#5ce591',
+                            '#5acdff',
+                            '#c452ff'],
+                        data: [
+                            lista_product1[indice],
+                            lista_product2[indice],
+                            lista_product3[indice],
+                            lista_product4[indice],
+                            lista_product5[indice]
+                        ]
+                    }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Produccion Semanal'
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0,
+                            max: 900
+                        }
+                    }]
+                },
+                lines: [
+                    {
+                        type: "horizontal",
+                        y: 550, // AQUI SE MODIFICA EL LIMITE (META) DE PRODUCCION
+                        color: "red",
+                        label: "550"
+                        }
+                        ]
+            }
+        });
+
+        var limite1 = 7.5;
+        var limite2 = 10;
+
+        var mychart2 = new Chart(e, {
+            type: 'line',
+            data: {
+                labels: ["0", "Semana 1", "Semana 2", "Semana 3", "Semana 4", "Semana 5"],
+                datasets: [
+                    {
+                        label: "L1",
+                        borderColor: '#ff6384',
+                        backgroundColor: '#ff6384',
+                        data: [0,
+                            lista_c1l1[indice],
+                            lista_c2l1[indice],
+                            lista_c3l1[indice],
+                            lista_c4l1[indice],
+                            lista_c5l1[indice]],
+                        fill: false
+                    },
+                    {
+                        label: "L2",
+                        borderColor: '#007bff',
+                        backgroundColor: '#007bff',
+                        data: [0,
+                            lista_c1l2[indice],
+                            lista_c2l2[indice],
+                            lista_c3l2[indice],
+                            lista_c4l2[indice],
+                            lista_c5l2[indice]],
+                        fill: false
+                    }]
+            },
+            options: {
+                responsive: true,
+                lines: [
+                    {
+                        type: "horizontal",
+                        y: limite2,
+                        color: "red",
+                        label: "L2: 10%"
+                    },
+                    {
+                        type: "horizontal",
+                        y: limite1,
+                        color: "red",
+                        label: "L1: 7.5%"
+                    }
+                ],
+                elements: {
+                    line: {
+                        tension: 0.000001
+                    },
+                    point: {
+                        pointStyle: 'rectRot',
+                        radius: 10
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            max: 20
+                        }
+                    }]
+                }
+            }
+        });
+
+        var limiteHorasTrabajadas = 180;
+        var tiempoActual = calcularTiempoAcumuladoPorCincoSemanas(indice);
+
+        var mychart3 = new Chart(t, {
+            type: 'doughnut',
+            data: {
+                labels: ["Tiempo Realizado: " + tiempoActual, "Tiempo Restante"],
+                datasets: [
+                    {
+                        label: "Tiempo de Trabajo",
+                        backgroundColor: ["#007bff", "#ff6384"],
+                        data: [tiempoActual, (limiteHorasTrabajadas > tiempoActual) ? (limiteHorasTrabajadas - tiempoActual) : 0]
+                    }],
+            },
+            options: { responsive: true }
+        });
+
+        indice++;
+        if (indice > lista_nombres.length()) indice = 0;
+    };
+
+    function calcularTiempoAcumuladoPorCincoSemanas(indice) {
+        if(lista_tiempo5[indice] != "nan") {
+            return lista_tiempo5[indice];
+        } else {
+            if(lista_tiempo4[indice] != "nan") {
+                return lista_tiempo4[indice];
+            } else {
+                if(lista_tiempo3[indice] != "nan") {
+                    return lista_tiempo3[indice];
+                } else {
+                    if(lista_tiempo2[indice] != "nan") {
+                        return lista_tiempo2[indice];
+                    } else {
+                        return lista_tiempo1[indice];
+                    }
+                }
+            }
+        }
     }
 
-})
+    var chartPluginLineaHorizontal = {
+        afterDraw: function (chartobj) {
+            if (chartobj.options.lines) {
+                var ctx = chartobj.chart.ctx;
+                for (var idx = 0; idx < chartobj.options.lines.length; idx++) {
 
-var mychart2 = new Chart(e, {
-    // The type of chart we want to create
-    type: 'line',
+                    var line = chartobj.options.lines[idx];
+                    line.iniCoord = [0, 0];
+                    line.endCoord = [0, 0];
+                    line.color = line.color ? line.color : "red";
+                    line.label = line.label ? line.label : "";
+                    line.width = 4;
 
-    // The data for our dataset
-    data: {
-        labels: [{% for nombre in header %}
-                      "{{nombre}}",
-                    {% endfor %}],
-        datasets: [{
-            label: "L1",
-            borderColor: 'rgb(255, 99, 132)',
-            data: [{% for t1 in tipo1 %}
-                      {{t1}},
-                  {% endfor %}],
+                    if (line.type == "horizontal" && line.y) {
+                        line.iniCoord[1] = line.endCoord[1] = chartobj.scales["y-axis-0"].getPixelForValue(line.y);
+                        line.endCoord[0] = chartobj.chart.width;
+                    } else if (line.type == "vertical" && line.x) {
+                        line.iniCoord[0] = line.endCoord[0] = chartobj.scales["x-axis-0"].getPixelForValue(line.x);
+                        line.endCoord[1] = chartobj.chart.height;
+                    }
 
-        },
-      {
-        label: "L2",
-        borderColor: '#007bff',
-        data: [{% for t2 in tipo2 %}
-                  {{t2}},
-              {% endfor %}],
-      }]
-    },
+                    ctx.beginPath();
 
-    // Configuration options go here
-    options: {
-        responsive: true,
+                    if( line.y == 10 ) {
+                        ctx.fillStyle = "rgba(0, 255, 0, 0.1)";
+                        ctx.fillRect(line.iniCoord[0], line.iniCoord[1], line.endCoord[0], chartobj.scales["y-axis-0"].getPixelForValue(0));
+                        ctx.fill();
+                    }
 
+                    ctx.moveTo(line.iniCoord[0], line.iniCoord[1]);
+                    ctx.lineTo(line.endCoord[0], line.endCoord[1]);
+                    ctx.strokeStyle = line.color;
+                    ctx.stroke();
+
+                    ctx.fillStyle = line.color;
+                    ctx.fillText(line.label, line.iniCoord[0], line.iniCoord[1] + 10);
+                    ctx.fill();
+                }
+            }
+        }
     }
-
-});
-
+    Chart.pluginService.register(chartPluginLineaHorizontal);
 </script>
 </body>
 </html>

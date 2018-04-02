@@ -2,31 +2,40 @@
 {% block content %}
 
     <div class="container-fluid p-0">
-    <div class="logo">
-        <a class="logo-link" href="#">
-            <img class="img-fluid" src="static/img/logo_header.png" alt="logo nortech">
+        <div class="logo">
+            <a class="logo-link" href="#">
+                <img class="img-fluid" src="static/img/logo_header.png" alt="logo nortech">
 
-        </a>
-    </div>
+            </a>
+        </div>
 
-    <div class="section container-fluid">
-        <div class="row">
-            <div class="col-lg-6 col-sm-12 col-md-12">
-              <h1 class="title">Produccion</h1>
-                <canvas id="myChart"></canvas>
+        <div class="section container-fluid">
+            <div class="label-empleado">
+                <label id="lblempleado"></label><br>
             </div>
-              <div class="col-lg-6 col-sm-12 col-md-12">
-                <h1 class="title">Errores</h1>
-                  <canvas id="Chart"></canvas>
-              </div>
+            <p style="border-top:1px solid #e1e1e1"></p>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <h1 class="title">Produccion</h1>
+                    <canvas id="myChart1"></canvas>
+                </div>
+                <div class="col-md-4">
+                    <h1 class="title">Errores</h1>
+                    <canvas id="myChart2"></canvas>
+                </div>
+                <div class="col-md-4">
+                    <h1 class="title">Tiempos</h1>
+                    <canvas id="myChart3"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Copyright &copy; Sissa.s.a
+            <a href="/login">Login</a>
         </div>
     </div>
-
-  <div class="footer">
-    Copyright &copy; Sissa.s.a
-    <a href="/login">Login</a>
-  </div>
-</div>
 
 
 {% endblock %}

@@ -1,1 +1,59 @@
-<h1>This is the admin</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sissa - Administracion</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="/static/css/lib/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container-fluid p-0">
+    <div class="logo">
+        <a class="logo-link" href="#">
+            <img class="img-fluid" src="static/img/logo_header.png" alt="logo nortech">
+        </a>
+    </div>
+
+    <div class="wrapper">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div>
+                <div class="wrap-tittle">
+                    <h1>Subir Archivo</h1>
+                    <h5>Cargue un nuevo archivo con extension .csv para actualizar los datos estadisticos</h5>
+                </div>
+
+                <div class="wrap-carga">
+                    <div class="wrap-carga-datos">
+                        <p>Estadistica de Produccion</p>
+                        <input type="file" name="archivo1" accept=".csv">
+                    </div>
+
+                    <div class="wrap-carga-datos">
+                        <p>Estadistica de Error</p>
+                        <input id="file2" type="file" name="archivo2" accept=".csv">
+                    </div>
+
+                    <div class="wrap-carga-datos">
+                        <p>Estadistica de Tiempo</p>
+                        <input id="file3" type="file" name="archivo3" accept=".csv">
+                    </div>
+                </div>
+
+            <input type="submit" value="Enviar">
+            </div>
+        </form>
+    </div>
+
+    <div class="footer">
+        Copyright &copy; Sissa S.A
+    </div>
+</div>
+
+</body>
+</html>
