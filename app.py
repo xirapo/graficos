@@ -84,6 +84,9 @@ def home():
     data3 = pd.read_csv(fileTiempo, sep=',', header=0, encoding='latin1')
 
     #print("file error" + fileError)
+    print(data2)
+    print ("=======================")
+    print ("data2: " + data2['C1-L1'])
 
     #LEER PRODUCCION
     t = data1['Nombre']
