@@ -9,6 +9,8 @@ from functools import wraps
 import pandas as pd
 import numpy as np
 
+import logging
+
 ## CAMBIOS
 from werkzeug.utils import secure_filename
 
@@ -31,6 +33,8 @@ ALLOWED_EXTENSIONS = set(['csv'])
 
 app = Flask(__name__)  ## ESTO YA ESTABA
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 
 
 def allowed_file(filename):
@@ -79,7 +83,7 @@ def home():
     data2 = pd.read_csv(fileError, sep=',', header=0, encoding='latin1')
     data3 = pd.read_csv(fileTiempo, sep=',', header=0, encoding='latin1')
 
-    print("file error" + fileError)
+    #print("file error" + fileError)
 
     #LEER PRODUCCION
     t = data1['Nombre']
