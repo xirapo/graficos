@@ -1,7 +1,6 @@
-Flask==0.12.2
-gunicorn==19.7.1
-Jinja2==2.10
-numpy==1.13.3
-pandas==0.22.0
-pathlib==1.0.1
-Werkzeug==0.14.1
+Flask
+gunicorn
+Jinja2
+numpy
+pandas
+Werkzeug
